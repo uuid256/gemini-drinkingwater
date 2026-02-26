@@ -1,73 +1,49 @@
-# React + TypeScript + Vite
+# ระบบบันทึกการขายน้ำดื่ม (Drinking Water Sales Tracker)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+แอปพลิเคชันสำหรับร้านขายน้ำดื่มส่งตามบ้าน เพื่อช่วยให้พนักงานหรือเจ้าของร้านสามารถบันทึกการขายน้ำดื่ม (จำนวนถัง, ชื่อลูกค้า, ยอดเงิน) ได้อย่างสะดวกและรวดเร็วผ่านมือถือหรือคอมพิวเตอร์ระหว่างการจัดส่ง
 
-Currently, two official plugins are available:
+## 🌟 ฟีเจอร์หลัก (Features)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*   **บันทึกการขายง่ายและรวดเร็ว:** กรอกแค่ชื่อลูกค้าและจำนวนถัง ระบบจะคำนวณยอดเงินให้อัตโนมัติ (ราคาเริ่มต้น 15 บาท/ถัง)
+*   **แดชบอร์ดสรุปยอดประจำวัน:** ดูจำนวนถังที่ขายได้รวม และยอดเงินรวมทั้งหมดได้ทันทีแบบ Real-time
+*   **ดูประวัติและจัดการข้อมูล:** ตรวจสอบรายการขายที่ผ่านมา หากบันทึกผิดพลาดสามารถกดยกเลิก/ลบรายการนั้นๆ ได้
+*   **เก็บข้อมูลออฟไลน์:** ข้อมูลทั้งหมดถูกบันทึกไว้ใน LocalStorage ของเบราว์เซอร์อย่างปลอดภัย ไม่ต้องใช้ฐานข้อมูลหรืออินเทอร์เน็ตก็ใช้งานได้ (ข้อมูลไม่หายเมื่อรีเฟรชหน้าเว็บ)
+*   **ออกแบบมาเพื่อมือถือ (Mobile-Friendly):** หน้าจอและปุ่มต่างๆ ถูกออกแบบให้มีขนาดใหญ่ กดง่าย เหมาะกับการใช้งานบนหน้าจอมือถือขณะขับรถส่งน้ำ
 
-## React Compiler
+## 🛠️ เทคโนโลยีที่ใช้ (Tech Stack)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+*   **Frontend Framework:** React 18 + TypeScript
+*   **Build Tool:** Vite
+*   **Styling:** Vanilla CSS (เน้นความเรียบง่ายและโหลดเร็ว)
+*   **Icons:** Lucide-React
+*   **Data Storage:** Browser LocalStorage
 
-## Expanding the ESLint configuration
+## 🚀 วิธีการติดตั้งและรันโปรเจกต์ (Getting Started)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+หากต้องการนำไปพัฒนาต่อ หรือรันบนเครื่องของคุณเอง สามารถทำตามขั้นตอนด้านล่างได้เลยครับ:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### ข้อกำหนดเบื้องต้น (Prerequisites)
+*   Node.js (เวอร์ชัน 18 หรือสูงกว่า)
+*   npm หรือ yarn
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### ขั้นตอนการรัน
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1.  **Clone หรือ Download โค้ดนี้มาที่เครื่องของคุณ**
+2.  **เปิด Terminal และเข้าไปที่โฟลเดอร์ของโปรเจกต์**
+3.  **ติดตั้งเครื่องมือที่จำเป็น (Dependencies):**
+    ```bash
+    npm install
+    # หรือ หากพบปัญหาเวอร์ชันขัดแย้ง สามารถใช้คำสั่ง:
+    # npm install --legacy-peer-deps
+    ```
+4.  **เริ่มต้นใช้งานโหมดนักพัฒนา (Start Development Server):**
+    ```bash
+    npm run dev
+    ```
+5.  **เปิดเว็บเบราว์เซอร์:**
+    ระบบจะแจ้งลิงก์ (โดยปกติจะเป็น `http://localhost:5173`) ให้นำลิงก์นี้ไปเปิดในเบราว์เซอร์ของคุณเพื่อเริ่มใช้งานได้ทันที
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📝 การปรับแต่ง (Customization)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+*   **เปลี่ยนราคาต่อถัง:** หากคุณขายน้ำในราคาอื่น คุณสามารถเข้าไปแก้ไขตัวแปร `PRICE_PER_BOTTLE` ในไฟล์ `src/App.tsx` (ค่าเริ่มต้นคือ 15)
+*   **ล้างข้อมูลทั้งหมด:** เนื่องจากข้อมูลเก็บอยู่ในเบราว์เซอร์ หากต้องการเริ่มใหม่ทั้งหมด สามารถล้างข้อมูล Site Data / LocalStorage ในการตั้งค่าเบราว์เซอร์ของคุณได้
